@@ -3,7 +3,7 @@ import React from 'react';
 const Sort = (value) => {
     const [open, setOpen] = React.useState(false);
 
-    export const list = ['цене', 'популярности', "алфавиту"];
+    const list = ['цене', 'популярности', "алфавиту"];
 
     const onClickListItem = (obj) => {
         setOpen(false);

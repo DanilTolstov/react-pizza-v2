@@ -1,14 +1,20 @@
 import React from "react";
 import './scss/app.scss';
+
 import Header from "./components/Header";
-import {Categories} from "./components";
+import Home from "./pages/Home";
 
 function App() {
 
-  const [items, setItems] = React.useState([]);
-
   return (
-      <Header />
+      <div className="wrapper">
+        <Header />
+        <div className="content">
+          <div className="container">
+            <Home />
+          </div>
+        </div>
+      </div>
   );
 }
 
