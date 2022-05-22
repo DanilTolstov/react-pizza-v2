@@ -1,9 +1,20 @@
 import React from 'react';
 
+
+export const sortList = [
+    { name: 'популярности (DESC)', sortProperty: 'rating' },
+    { name: 'популярности (ASC)', sortProperty: '-rating' },
+    { name: 'цене (DESC)', sortProperty: 'price' },
+    { name: 'цене (ASC)', sortProperty: '-price' },
+    { name: 'алфавиту (DESC)', sortProperty: 'title' },
+    { name: 'алфавиту (ASC)', sortProperty: '-title' },
+];
+
 const Sort = (value) => {
+
+    const sortRef = React.useRef();
     const [open, setOpen] = React.useState(false);
 
-    const list = ['цене', 'популярности', "алфавиту"];
 
     const onClickListItem = (obj) => {
         setOpen(false);

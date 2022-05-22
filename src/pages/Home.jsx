@@ -4,6 +4,7 @@ import {Categories} from '../components';
 import Sort from '../components/Sort';
 import PizzaBlock from "../components/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
+import {Link} from "react-router-dom";
 
 
 const Home = () => {
@@ -17,7 +18,13 @@ const Home = () => {
                 setItems(arr);
                 setIsLoading(false)
             });
-    })
+        window.scrollTo(0,0);
+    },[])
+
+    const skeletons = [...new Array(6)].map((_, index) => <Skeleton key={index} />);
+
+    const pizzas = items.map((obj) => <PizzaBlock key={obj.id} {...obj} />)
+
     return (
         <div className="container">
             <div className="content__top">
@@ -29,12 +36,8 @@ const Home = () => {
                 <h2>Произошла ошибка 😕</h2>
                 <p>К сожалению, не удалось получить питсы. Попробуйте повторить попытку позже.</p>
             </div>
-            <div className="content__items">
-                {isLoading
-                    ? [...new Array(6)].map((_, index) => <Skeleton key={index}/>)
-                    : items.map((obj) => <PizzaBlock key={obj.id}/>)}
-                }
-            </div>
+            <div className="content__items">{isLoading ? skeletons : pizzas}</div>
+            <Pagination currentPage={currentPage} onChangePage={onChangePage} />
         </div>
     )
 }
